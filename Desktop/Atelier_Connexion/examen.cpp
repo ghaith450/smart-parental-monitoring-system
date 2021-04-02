@@ -40,3 +40,23 @@ void examen::setSession(QString session){this->session=session;}
 void examen::setDate(QString date) {this->date=date;}
 void examen::setId_enfant(int id_enfant){this->id_enfant=id_enfant;}
 void examen::setClasse(QString classe){this->classe=classe;}
+bool examen::ajouter()
+{
+    QSqlQuery query;//requete sql s'execute a partir du QT
+    QString id_string =QString::number(id_examen);
+    QString coefficient_string =QString::number(coefficient);
+    QString idEnfant_string =QString::number(id_enfant);
+
+    query.prepare("INSERT INTO examen (id_examen, nomMatiere,coefficient,session,date,id_enfant,classe) "
+                       "VALUES (:id_examen,:nomMatiere,:coefficient,:session,:date ,:id_enfant ,:classe )");
+
+         query.bindValue(":id_examen",id_string);//injection SQL (securité)
+         query.bindValue(":nom_matiere",nomMatiere);
+         query.bindValue(":coefficient",coefficient_string);
+         query.bindValue(":session",session);
+          query.bindValue(":date",date);
+         query.bindValue(":id_enfant",idEnfant_string);
+         query.bindValue(":classe",classe);
+     return query.exec();
+
+}

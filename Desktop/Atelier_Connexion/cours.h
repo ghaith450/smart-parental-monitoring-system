@@ -27,6 +27,11 @@ public:
     void setType(QString);
     bool ajouter();
 QSqlQueryModel* afficher();
+bool supprimer(int);
+bool modifier(int);
+QSqlQueryModel* tri();
+QSqlQueryModel* afficherRech(int);
+QSqlQueryModel* stat();
 private:
     int id_Cours;
     QString nom_matiere ;

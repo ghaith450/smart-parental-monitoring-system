@@ -26,6 +26,7 @@ public:
     void setDate(QString);
     void setId_enfant(int);
     void setClasse(QString);
+      bool ajouter();
 
 
  private:

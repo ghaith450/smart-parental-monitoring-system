@@ -44,8 +44,7 @@ void Cours::setType(QString type){this->type=type;}
 
 bool Cours::ajouter()
 {
-    bool test=false ;
-    QSqlQuery query;
+    QSqlQuery query;//requete sql s'execute a partir du QT
     QString id_string =QString::number(id_Cours);
     QString telephone_string =QString::number(telephone_proffeseur);
     QString prix_string =QString::number(prix);
@@ -53,15 +52,15 @@ bool Cours::ajouter()
     query.prepare("INSERT INTO COURS (id_Cours,nom_matiere,nom_proffeseur,prenom_proffeseur,telephone_proffeseur,prix,type) "
                        "VALUES (:id_Cours,:nom_matiere,:nom_proffeseur,:prenom_proffeseur,:telephone_proffeseur ,:prix ,:type )");
 
-         query.bindValue(":id_Cours",id_string);
+         query.bindValue(":id_Cours",id_string);//injection SQL (securité)
          query.bindValue(":nom_matiere",nom_matiere);
          query.bindValue(":nom_proffeseur",nom_proffeseur);
          query.bindValue(":prenom_proffeseur",prenom_proffeseur);
          query.bindValue(":telephone_proffeseur",telephone_string);
          query.bindValue(":prix",prix_string);
          query.bindValue(":type",type);
-     query.exec();
-     return test ;
+     return query.exec();
+
 }
 QSqlQueryModel* Cours::afficher()
 {
@@ -73,3 +72,59 @@ QSqlQueryModel* Cours::afficher()
 
     return model;
 }
+bool Cours::supprimer(int id)
+{
+    QSqlQuery q;
+    q.prepare("delete from cours where id_cours=:id");
+    q.bindValue(":id",id);
+    return q.exec();
+}
+
+bool Cours::modifier(int id)
+{
+    QSqlQuery query;
+
+    QString telephone_string =QString::number(telephone_proffeseur);
+    QString prix_string =QString::number(prix);
+    query.prepare("update cours set nom_matiere=:nom_matiere,nom_proffeseur=:nom_proffeseur,prenom_proffeseur=:prenom_proffeseur,telephone_proffeseur=:telephone_proffeseur,prix=:prix,type=:type where id_cours=:id");
+    query.bindValue(":id",id);//injection SQL (securité)
+    query.bindValue(":nom_matiere",nom_matiere);
+    query.bindValue(":nom_proffeseur",nom_proffeseur);
+    query.bindValue(":prenom_proffeseur",prenom_proffeseur);
+    query.bindValue(":telephone_proffeseur",telephone_string);
+    query.bindValue(":prix",prix_string);
+    query.bindValue(":type",type);
+return query.exec();
+}
+QSqlQueryModel* Cours::tri()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+
+          model->setQuery("SELECT* FROM cours order by prix");
+
+
+    return model;
+}
+QSqlQueryModel* Cours::afficherRech(int id)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+QString id_string=QString::number(id);
+          model->setQuery("SELECT* FROM cours where id_cours like '"+id_string+"%'");
+
+
+    return model;
+}
+QSqlQueryModel* Cours::stat()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+          model->setQuery("SELECT nom_matiere,count(*) as nombre FROM cours group by nom_matiere");
+
+
+    return model;
+}
+
+
+
+
