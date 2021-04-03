@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include"cours.h"
+#include<examen.h>
 namespace Ui {
 class MainWindow;
 }
@@ -30,9 +31,14 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void on_pushButton_7_clicked();
+
+
+
 private:
     Ui::MainWindow *ui;
    Cours tmpc ;
+   examen tmpe;
 };
 
 #endif // MAINWINDOW_H

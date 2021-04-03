@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include"cours.h"
+#include"examen.h"
 #include<QIntValidator>
 #include<QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
@@ -10,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->le_id_Cours->setValidator(new QIntValidator(100, 999999, this));
     ui->tab_cours->setModel(tmpc.afficher());
+    ui->tableView_2->setModel(tmpe.afficher());
     ui->tableView->setModel(tmpc.stat());
 
 }
@@ -77,4 +79,20 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_pushButton_6_clicked()
 {
       ui->tableView->setModel(tmpc.stat());
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    int id_examen=ui->le_id_examen->text().toInt();
+    QString nom_matiere=ui->le_nom_matiere_2->text();
+   float coefficient=ui->le_coefficient->text().toFloat();
+    QString session=ui->le_session->text();
+     QString date=ui->le_date->text();
+    int id_enfant =ui->le_id_enfant->text().toInt();
+ QString classe=ui->le_classe->text();
+
+  examen E(id_examen,nom_matiere,coefficient,session,date,id_enfant,classe) ;
+  E.ajouter();
+  ui->tab_cours->setModel(tmpc.afficher());
+
 }

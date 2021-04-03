@@ -27,6 +27,12 @@ public:
     void setId_enfant(int);
     void setClasse(QString);
       bool ajouter();
+      QSqlQueryModel* afficher();
+      bool supprimer(int);
+      bool modifier(int);
+      QSqlQueryModel* tri();
+      QSqlQueryModel* afficherRech(int);
+      QSqlQueryModel* stat();
 
 
  private:

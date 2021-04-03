@@ -47,11 +47,11 @@ bool examen::ajouter()
     QString coefficient_string =QString::number(coefficient);
     QString idEnfant_string =QString::number(id_enfant);
 
-    query.prepare("INSERT INTO examen (id_examen, nomMatiere,coefficient,session,date,id_enfant,classe) "
+    query.prepare("INSERT INTO examen (id_examen, nomMatiere,coefficient,session_,date_,id_enfant,classe) "
                        "VALUES (:id_examen,:nomMatiere,:coefficient,:session,:date ,:id_enfant ,:classe )");
 
          query.bindValue(":id_examen",id_string);//injection SQL (securité)
-         query.bindValue(":nom_matiere",nomMatiere);
+         query.bindValue(":nomMatiere",nomMatiere);
          query.bindValue(":coefficient",coefficient_string);
          query.bindValue(":session",session);
           query.bindValue(":date",date);
@@ -60,3 +60,14 @@ bool examen::ajouter()
      return query.exec();
 
 }
+QSqlQueryModel* examen::afficher()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+
+          model->setQuery("SELECT* FROM examen");
+
+
+    return model;
+}
+

@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include "connection.h"
 #include"cours.h"
+#include"examen.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
