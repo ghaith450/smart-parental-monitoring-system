@@ -4,6 +4,10 @@
 #include"examen.h"
 #include<QIntValidator>
 #include<QMessageBox>
+#include <QSystemTrayIcon>
+#include<QPixmap>
+#include<QLabel>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -13,7 +17,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tab_cours->setModel(tmpc.afficher());
     ui->tableView_2->setModel(tmpe.afficher());
     ui->tableView->setModel(tmpc.stat());
+    ui->setupUi(this);
 
+     QPixmap pix1("C:/Users/LENOVO/Desktop/Atelier_Connexion/images/mm.png");
+     ui->label_15->setPixmap(pix1);
+     setFixedSize(650,650);  //fixe la taille de la fenêtre
+
+       /* setWindowFlags(Qt::CustomizeWindowHint); //supprime les paramétrages de fenêtre par défaut. Oblige donc de préciser les réglagess autorisés
+
+        setWindowFlags(Qt::WindowTitleHint); //Autorise le titre de la fenêtre
+
+        setWindowFlags(Qt::WindowSystemMenuHint);//autorise le bouton de fermeture dans le bandeau de fenêtre
+
+        setWindowFlags(Qt::WindowMinimizeButtonHint);//autorise le bouton de réduction de fenêtre
+*/
 }
 
 MainWindow::~MainWindow()
@@ -95,4 +112,19 @@ void MainWindow::on_pushButton_7_clicked()
   E.ajouter();
   ui->tab_cours->setModel(tmpc.afficher());
 
+}
+
+void MainWindow::on_actionnew_triggered()
+{
+    QMessageBox::information(this,"title","new");
+}
+
+void MainWindow::on_actionopen_triggered()
+{
+   QMessageBox::information(this,"title","open");
+}
+
+void MainWindow::on_actionexit_triggered()
+{
+    QApplication::quit();
 }

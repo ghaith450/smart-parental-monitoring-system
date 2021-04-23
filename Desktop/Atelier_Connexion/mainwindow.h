@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include"cours.h"
 #include<examen.h>
+#include <QSystemTrayIcon>
+#include<QLabel>
 namespace Ui {
 class MainWindow;
 }
@@ -35,10 +37,18 @@ private slots:
 
 
 
+    void on_actionnew_triggered();
+
+    void on_actionopen_triggered();
+
+    void on_actionexit_triggered();
+
 private:
     Ui::MainWindow *ui;
    Cours tmpc ;
    examen tmpe;
+   QSystemTrayIcon icon;
+   QLabel *label1 ;
 };
 
 #endif // MAINWINDOW_H
