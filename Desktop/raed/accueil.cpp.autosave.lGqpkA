@@ -1,0 +1,117 @@
+#include "accueil.h"
+#include "ui_accueil.h"
+#include<QMessageBox>
+#include<QSqlQueryModel>
+#include<QSqlQuery>
+#include<QDebug>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QTextDocument>
+#include<QDate>
+#include<QFileDialog>
+accueil::accueil(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::accueil)
+{
+    ui->setupUi(this);
+    ui->button_profil->setFocus();
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+accueil::~accueil()
+{
+    delete ui;
+}
+
+
+void accueil::on_button_profil_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget_2->setCurrentIndex(0);
+    ui->button_client->setEnabled(1);
+}
+
+void accueil::on_button_employe_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget_2->setCurrentIndex(1);
+}
+
+void accueil::on_button_client_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget_2->setCurrentIndex(2);
+}
+
+void accueil::on_button_produit_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget_2->setCurrentIndex(3);
+}
+
+void accueil::on_button_equipement_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget_2->setCurrentIndex(4);
+}
+
+void accueil::on_button_fournisseurs_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget_2->setCurrentIndex(5);
+}
+
+void accueil::on_button_evenement_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+    ui->stackedWidget_2->setCurrentIndex(6);
+}
+
+
+
+void accueil::on_pushButton_clicked()
+{
+
+}
+
+
+
+
+
+
+
+void accueil::on_button_recette_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget_2->setCurrentIndex(7);
+}
+
+void accueil::on_button_quitter_clicked()
+{
+    close();
+}
+
+void accueil::on_aj_clicked()
+{
+     QSqlQuery qry;
+     int id_equipement;
+     QString nom;
+     int prix;
+     QString marque;
+     QString caracteristique;
+     QDate date_achat ;
+     QString etat;
+
+     nom=ui->nom_line->text().toInt();
+     date_achat=ui->nom_line->text();
+     prix=0;
+     marque="";
+     caracteristique="";
+     etat="en marche";
+
+}
+
+void accueil::on_button_recette_2_clicked()
+{
+
+}

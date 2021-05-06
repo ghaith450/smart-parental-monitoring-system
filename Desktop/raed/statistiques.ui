@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>statistiques</class>
+ <widget class="QWidget" name="statistiques">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>667</width>
+    <height>483</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QCustomPlot" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-1</x>
+     <y>49</y>
+     <width>661</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">*
+{
+border: 3px solid #000000;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>10</y>
+     <width>701</width>
+     <height>451</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">*
+{
+background:#ac9976;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tabchambre">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>300</y>
+     <width>581</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+    background-color: #aa0000;
+    color: #fffff8;
+}
+QTableView{border: 6px solid #aa0000; /*other code about padding background stc*/ ;}
+QHeaderView::section {
+    background-color: #aaaa7f;
+    padding: 4px;
+    border: 1px solid #fffff8;
+    font-size: 8pt;
+}
+
+QTableWidget {
+    gridline-color: #ff4842;
+    font-size: 9pt;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #ff4842;
+    border: 1px solid #fffff8;
+}</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>tabchambre</zorder>
+  <zorder>widget</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
